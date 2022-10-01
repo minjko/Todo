@@ -3,6 +3,7 @@ package com.example.todo.controller;
 import com.example.todo.dto.ResponseDTO;
 import com.example.todo.dto.UserDTO;
 import com.example.todo.model.UserEntity;
+import com.example.todo.security.TokenProvider;
 import com.example.todo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TokenProvider tokenProvider;
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
@@ -53,6 +57,26 @@ public class UserController {
                 userDTO.getEmail(),
                 userDTO.getPassword());
 
+        if(user != null) {
+            // 토큰 생성
+            final String token = tokenProvider.create(user);
+            final UserDTO responseUserDTO = UserDTO.builder()
+                    .email(user.getEmail())
+                    .id(user.getId())
+                    .token(token)
+                    .build();
+            return ResponseEntity.ok().body(responseUserDTO);
+        } else {
+            ResponseDTO responseDTO = ResponseDTO.builder()
+                    .error("Login failed")
+                    .build();
+            return ResponseEntity
+                    .badRequest()
+                    .body(responseDTO);
+        }
+
+
+        /*
         if (user != null) {
             final UserDTO responseUserDTO = UserDTO.builder()
                     .email(user.getEmail())
@@ -67,5 +91,7 @@ public class UserController {
                     .badRequest()
                     .body(responseDTO);
         }
+
+         */
     }
 }
