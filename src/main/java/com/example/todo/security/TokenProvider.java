@@ -28,7 +28,7 @@ public class TokenProvider {
 		}.
 		{ // payload
 		  "sub":"40288093784915d201784916a40c0001",
-		  "iss": "todo app",
+		  "iss": "demo app",
 		  "iat":1595733657,
 		  "exp":1596597657
 		}.
