@@ -64,6 +64,7 @@ public class UserController {
                 userDTO.getPassword(),
                 passwordEncoder);
 
+        // user가 있다면
         if(user != null) {
             // 토큰 생성
             final String token = tokenProvider.create(user);
@@ -73,6 +74,7 @@ public class UserController {
                     .token(token)
                     .build();
             return ResponseEntity.ok().body(responseUserDTO);
+        // user가 없다면
         } else {
             ResponseDTO responseDTO = ResponseDTO.builder()
                     .error("Login failed.")

@@ -1,0 +1,35 @@
+[ Todo 웹 애플리케이션 ]
+
+사용한 스택  : Frontend(React.js), Backend(Spring-boot, AWS)
+개발 환경 : Eclipse(2020-06 for using jdk1.8), jdk1.8(java8)
+
+<0. 준비>
+이전 상황 : JavaSE 16(Oracle jdk16), Eclipse 2022-06
+문제 상황 : Eclipse 2022-06에서는 최소 Java11 이상 사용 요구
+해결 상황 : C:\Program Files\Java에서 몇 개의 자바 버전을 가지고 있는지 확인
+              : JavaSE 8(Oracle jdk1.8) 설치 --> https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html 접속 및 jdk-8u241-windows-x64.exe 설치
+                                                      --> [Windows]-[시스템 환경 변수 편집]-[환경 변수]-[시스템 변수] JAVA_HOME 값 = jdk16 경로에서 jdk1.8 경로로 수정(설치된 자바 jdk 파일 경로)
+										                         ex) C:\Program Files\Java\jdk1.8.0_241
+ 			            							   Path 값 = jdk1.8\bin 경로 추가 및 맨 위로 이동                                         
+										              C:\Program Files\Java\jdk1.8.0_241\bin 추가
+			            --> C:\Program Files\Java에서 설치되었는지 확인(ex. jdk1.8.0_241)
+			            --> CMD 창에 'java -version' 명령어로 버전 확인 가능
+			            +++ jdk1.8을 사용하는 또 다른 방법 : https://computer-science-student.tistory.com/467
+
+              : Eclipse 2022-06 삭제 --> CC:\Users\komj 폴더 아래 '.eclipse', '.p2', 'eclipse(이클립스 설치 시 지정한 경로에 있는 폴더)', 'eclipse-workspace(워크스페이스 생성 시 지정한 경로에 있는 워크스페이스 폴더들)' 삭제
+	: Eclipse 2020-06 설치 --> https://www.eclipse.org/downloads/packages/release/2020-06/r 접속 및 Eclipse IDE for Java Developers의 Windows x86_64 설치
+			  +++ Eclipse 2022-06에서 jdk1.8을 사용하는 또 다른 방법 : https://mindolsj-dev.tistory.com/entry/Eclipse%EC%9D%B4%ED%81%B4%EB%A6%BD%EC%8A%A4-JVM-is-not-suitable-for-this-product-%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95
+추가 설정 : Eclipse가 기본으로 사용하는 jdk 버전 설정 및 프로젝트별 사용하는 jdk 버전 변경 방법
+	** jdk, jre, java 버전을 모두 맞춰주어야 한다
+	- Eclipse 기본 jdk 버전 설정 후 프로젝트 동일한 jdk 버전 설치방법 
+				   jre : 사용하고자 하는 jdk 버전 추가 --> [Eclipse]-[Windows]-[Preference]-[Java]-[Installed JREs]-[Add]-[Standard VM]-[JRE home : C:\Program Files\Java\jdk1.8.0_241]-[JRE name : jdk1.8.0_241]-[finish]-해당 jdk 버전으로 체크-[Apply]-[Apply and Close]
+			                 jdk : [프로젝트]-[마우스 우클릭]-[Properties]-[Java Compiler : Use compliance from execution environment... 체크, Enable project specifir settings 체크 / Java Build Path : [Libraries]-JRE System Library Java SE-1.8 더블 클릭]-[Execution environment 또는 Workspace default JRE 체크]-[Apply]-[Apply and Close]
+				   java : [프로젝트]-[마우스 우클릭]-[Properties]-[Project Facets](이클립스 기본 버전에는 탭이 없는 듯 ex) Java Project)-[Configuration]-[Java Version]-[1.8]
+
+
+	- 프로젝트별 jdk 버전 설정 방법(Eclipse 기본 jdk가 다를 때)
+				   jre : 사용하고자 하는 jdk 버전 추가 --> [Eclipse]-[Windows]-[Preference]-[Java]-[Installed JREs]-[Add]-[Standard VM]-[JRE home : C:\Program Files\Java\jdk1.8.0_241]-[JRE name : jdk1.8.0_241]-[finish]-해당 jdk 버전으로 체크-[Apply]-[Apply and Close]
+				   jdk : 
+              
+23mi
+
